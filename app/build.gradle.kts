@@ -35,3 +35,13 @@ tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
+tasks.register<JavaExec>("runPi") {
+    mainClass.set("Main")
+    classpath = sourceSets["main"].runtimeClasspath
+    jvmArgs = listOf(
+        "--module-path=/usr/share/openjfx/lib",
+        "--add-modules=javafx.controls,javafx.fxml"
+    )
+}
+
